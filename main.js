@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const enter = gsap.timeline({paused: true });
     enter
     .to(menuWrapper, {
-        top: "0rem",
+        top: "10rem",
     opacity: 1,
     visibility: "visible",
     ease: "power3.out",
