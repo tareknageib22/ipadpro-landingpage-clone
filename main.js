@@ -74,6 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
             height: 0,
             ease: "power2.inOut",
             duration: 0.5,
+            css: {
+               backgrundColor:"red",
+            },
         }, "-=0.2")
         .to(menuWrapper, {
             opacity: 0,
