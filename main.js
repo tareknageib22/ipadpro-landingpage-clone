@@ -27,11 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     y: 0,
     });
 
+    gsap.to(macMenuLinks,{color:"red"})
+
     // ✅ Menu Enter Timeline
     const enter = gsap.timeline({paused: true });
     enter
     .to(menuWrapper, {
-        top: "10rem",
+        top: "0rem",
     opacity: 1,
     visibility: "visible",
     ease: "power3.out",
