@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 0,
     });
 
-    gsap.to(macMenuLinks, { color: "red" })
 
     // ✅ Menu Enter Timeline
     const enter = gsap.timeline({ paused: true });
@@ -47,9 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .from(macMenuLinks, {
             y: -10,
             opacity: 0,
-            css: {
-                color: "red"
-            },
             stagger: 0.05,
             duration: 0.5,
             ease: "power3.inOut",
