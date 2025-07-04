@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 0,
     });
 
+    // ✅ Menu Enter Timeline
 
     // ✅ Menu Enter Timeline
     const enter = gsap.timeline({ paused: true });
