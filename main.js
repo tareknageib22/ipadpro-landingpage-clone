@@ -57,7 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 filter: "brightness(1.5)",
             },
             duration: 1,
-        }, "-=1");
+        }, "-=1").to(macMenuLinks, {
+            color: "red"
+        }, "-=0.3");
 
     // ✅ Menu Exit Timeline
     const exit = gsap.timeline({ paused: true });
@@ -74,9 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
             height: 0,
             ease: "power2.inOut",
             duration: 0.5,
-            css: {
-               backgroundColor:"red",
-            },
         }, "-=0.2")
         .to(menuWrapper, {
             opacity: 0,
