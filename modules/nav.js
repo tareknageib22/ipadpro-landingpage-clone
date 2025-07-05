@@ -1,103 +1,39 @@
-export function nav_dropmenu_animation (){
+export function nav_dropmenu_animation() {
+    const wrapper = document.querySelector("#mac_menu-wrapper");
+    const trigger = document.querySelector("#mac");
+    const menu = document.querySelector("#mac_menu");
+    const links = gsap.utils.toArray("#mac_menu a");
 
+    if (!wrapper || !trigger || !menu) return;
 
-    // ✅ Element references
-    const menuWrapper = document.querySelector("#mac_menu-wrapper");
-    const body = document.querySelector("body");
-    const macTrigger = document.querySelector("#mac");
-    const macMenu = document.querySelector("#mac_menu");
-    const macMenuLinks = gsap.utils.toArray("#mac_menu a");
+    gsap.set(wrapper, { visibility: "hidden", opacity: 0 });
+    gsap.set(menu, { scaleY: 0, transformOrigin: "top" });
 
-    // ✅ Initial hidden state
-    gsap.set(menuWrapper, {
-        visibility: "hidden",
-        opacity: 0,
-        y: 0,
+    const enter = gsap.timeline({ paused: true })
+        .to(wrapper, { visibility: "visible", opacity: 1, duration: 0.5 })
+        .to(menu, { scaleY: 1, duration: 0.3 }, "<")
+        .from(links, { y: -10, opacity: 0, stagger: 0.05, duration: 0.3 }, "<")
+        .to(wrapper, { backdropFilter: "blur(10px)", filter: "brightness(1.5)", duration: 0.3 }, "<");
+
+    const exit = gsap.timeline({ paused: true })
+        .to(links, { opacity: 0, stagger: 0.03, duration: 0.2 })
+        .to(menu, { scaleY: 0, duration: 0.3 }, "-=0.1")
+        .to(wrapper, { opacity: 0, duration: 0.3 })
+        .set(wrapper, { visibility: "hidden", filter: "none", backdropFilter: "none" });
+
+    let open = false;
+
+    trigger.addEventListener("mouseenter", () => {
+        if (open) return;
+        open = true;
+        exit.pause(0);
+        enter.restart();
     });
 
-    // ✅ Menu Enter Timeline
-
-    // ✅ Menu Enter Timeline
-    const enter = gsap.timeline({ paused: true });
-    enter
-        .to(menuWrapper, {
-            top: "0rem",
-            opacity: 1,
-            visibility: "visible",
-            ease: "power3.out",
-            duration: 1,
-        })
-        .from(macMenu, {
-            y: -100,
-            ease: "power3.out",
-            duration: 1,
-        }, "<")
-        .from(macMenuLinks, {
-            y: -10,
-            opacity: 0,
-            stagger: 0.05,
-            duration: 0.5,
-            ease: "power3.inOut",
-        }, "-=0.3")
-        .to(menuWrapper, {
-            css: {
-                backdropFilter: "blur(10px)",
-                filter: "brightness(1.5)",
-            },
-            duration: 1,
-        }, "-=1");
-
-    // ✅ Menu Exit Timeline
-    const exit = gsap.timeline({ paused: true });
-    exit
-        .to(macMenuLinks, {
-            opacity: 0,
-            stagger: {
-                each: 0.03,
-                from: "end"
-            },
-            duration: 0.3,
-        })
-        .to(macMenu, {
-            height: 0,
-            ease: "power2.inOut",
-            duration: 0.5,
-        }, "-=0.2")
-        .to(menuWrapper, {
-            opacity: 0,
-            ease: "power3.inOut",
-            duration: 0.75,
-        })
-        .set(menuWrapper, {
-            visibility: "hidden",
-            y: 0,
-            css: {
-                backdropFilter: "none",
-                filter: "brightness(1)",
-            },
-            clearProps: "all",
-        });
-
-    // ✅ Hover + interaction
-    let menuOpen = false;
-
-    function showMenu() {
-        if (menuOpen) return;
-        menuOpen = true;
-        exit.pause().progress(0);
-        enter.restart();
-    }
-
-    function hideMenu() {
-        if (!menuOpen) return;
-        menuOpen = false;
-        enter.pause().progress(0);
+    menu.addEventListener("mouseleave", () => {
+        if (!open) return;
+        open = false;
+        enter.pause(0);
         exit.restart();
-    }
-
-    // ✅ Event Listeners
-    macTrigger.addEventListener("mouseenter", showMenu);
-    macMenu.addEventListener("mouseleave", hideMenu);
-    body.addEventListener("mouseleave", hideMenu); // Optional
-
+    });
 }
