@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         smoothTouch: 0.1,
     });
 
-    const navLinks = document.querySelectorAll("nav a[data-target]");
+    const navLinks = gsap.utils.toArray("nav a[data-target]");
 console.log(navLinks)
     navLinks.forEach(link => {
         const targetId = link.getAttribute("data-target");
