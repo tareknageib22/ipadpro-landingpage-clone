@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).to(wrapper, {
         backdropFilter: 'brightness(200%) blur(15px)',
         duration: .8,
-        ease: "power2.inOut"
+        ease: "power3.out"
     });
 
     menu_entery_animation.play();  // ✅ removed comma
