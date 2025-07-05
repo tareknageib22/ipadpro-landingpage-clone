@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const navLinks = document.querySelectorAll("nav a[data-target]");
-
+console.log(navLinks)
     navLinks.forEach(link => {
         const targetId = link.getAttribute("data-target");
         const menuWrapper = document.getElementById(targetId);
