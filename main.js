@@ -1,5 +1,3 @@
-import nav_dropmenu_animation from './modules/nav'
-
 document.addEventListener("DOMContentLoaded", () => {
 
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
