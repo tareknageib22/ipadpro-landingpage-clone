@@ -26,10 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
         top: "0rem",
         duration: 1,
         ease: "power2.out"
+    }).to(wrapper, {
+        backdropFilter: 'brightness(200%) blur(50px)',
+        duration: 1,
+        ease: "power2.out"
     });
 
     menu_entery_animation.play();  // ✅ removed comma
 
     // const menu_exist_animation = gsap.timeline();
-    
+
 });
