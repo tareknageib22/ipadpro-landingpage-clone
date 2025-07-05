@@ -18,26 +18,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!wrapper || !trigger || !menu) return;
 
-    function enter() {
-        const menu_entery_animation = gsap.timeline();
-        menu_entery_animation.to(wrapper, {
-            visibility: "visible",  // ✅ fixed typo
+    // ✅ create the timeline once, paused
+    const menu_entery_animation = gsap.timeline({ paused: true });
+
+    menu_entery_animation
+        .to(wrapper, {
+            visibility: "visible",
             opacity: 1,
             top: "0rem",
             duration: 1,
             ease: "power2.out"
-        }).to(wrapper, {
+        })
+        .to(wrapper, {
             backdropFilter: 'blur(15px)',
             duration: 1,
             ease: "power3.out"
         });
-    }
 
-
+    // ✅ trigger the animation on hover
     trigger.addEventListener("mouseenter", () => {
-        enter.restart();
+        menu_entery_animation.restart();
     });
-
-    // const menu_exist_animation = gsap.timeline();
 
 });
