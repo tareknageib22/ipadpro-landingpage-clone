@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach(link => {
         const targetId = link.getAttribute("data-target");
         const menuWrapper = document.getElementById(targetId);
-console.log(link, targetId, menuWrapper);
+console.log(link);
 
         if (!menuWrapper) return;
 
