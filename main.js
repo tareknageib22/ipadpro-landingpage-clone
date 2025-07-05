@@ -18,23 +18,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!wrapper || !trigger || !menu) return;
 
-    const menu_entery_animation = gsap.timeline();
+    function enter() {
+        const menu_entery_animation = gsap.timeline();
+        menu_entery_animation.to(wrapper, {
+            visibility: "visible",  // ✅ fixed typo
+            opacity: 1,
+            top: "0rem",
+            duration: 1,
+            ease: "power2.out"
+        }).to(wrapper, {
+            backdropFilter: 'blur(15px)',
+            duration: 1,
+            ease: "power3.out"
+        });
+    }
 
-    menu_entery_animation.to(wrapper, {
-        visibility: "visible",  // ✅ fixed typo
-        opacity: 1,
-        top: "0rem",
-        duration: 1,
-        ease: "power2.out"
-    }).to(wrapper, {
-        backdropFilter: 'blur(15px)',
-        duration: 1,
-        ease: "power3.out"
+
+    trigger.addEventListener("mouseenter", () => {
+        enter.restart();
     });
-
-trigger.addEventListener("mouseenter", () => {
-    menu_entery_animation.restart(); 
-});
 
     // const menu_exist_animation = gsap.timeline();
 
