@@ -26,14 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
         duration:1,
         top:"0rem",
         ease:"power2.out"
-     }).to(wrapper,{
-        backdropFilter:"brightness(200%) blur(35)",
      })
      
      menu_entery_animation.play(),
-     
+
      // drop menu exist animation
-    const menu_exist_animation = gsap.timeline();
+    // const menu_exist_animation = gsap.timeline();
 
 
 
