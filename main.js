@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "power3.out"
     });
 
-    menu_entery_animation.play();  // ✅ removed comma
+trigger.addEventListener("mouseenter", () => {
+    menu_entery_animation.restart(); 
+});
 
     // const menu_exist_animation = gsap.timeline();
 
