@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 1,
         ease: "power2.out"
     }).to(wrapper, {
-        backdropFilter: 'brightness(200%) blur(15px)',
-        duration: .8,
+        backdropFilter: 'blur(15px)',
+        duration: 1,
         ease: "power3.out"
     });
 
