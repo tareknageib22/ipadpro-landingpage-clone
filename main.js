@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 1,
         ease: "power2.out"
     }).to(wrapper, {
-        backdropFilter: 'brightness(200%) blur(50px)',
-        duration: 1,
-        ease: "power2.out"
+        backdropFilter: 'brightness(200%) blur(25px)',
+        duration: .3,
+        ease: "power2.inOut"
     });
 
     menu_entery_animation.play();  // ✅ removed comma
