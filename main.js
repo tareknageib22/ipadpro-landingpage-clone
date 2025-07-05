@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const navLinks = gsap.utils.toArray("nav a[data-target]");
-console.log(navLinks)
     navLinks.forEach(link => {
         const targetId = link.getAttribute("data-target");
         const menuWrapper = document.getElementById(targetId);
+console.log(link, targetId, menuWrapper);
 
         if (!menuWrapper) return;
 
