@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const trigger = document.querySelector("#mac");
     const menu = document.querySelector("#mac_menu");
     const links = gsap.utils.toArray("#mac_menu a");
+    console.log(links)
 
     if (!wrapper || !trigger || !menu) return;
 
