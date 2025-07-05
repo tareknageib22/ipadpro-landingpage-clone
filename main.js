@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
-    const smoother = ScrollSmoother.create({
+    ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
         content: "#smooth-content",
         smooth: 1,
@@ -10,34 +10,38 @@ document.addEventListener("DOMContentLoaded", () => {
         smoothTouch: 0.1,
     });
 
-    const wrapper = document.querySelector("#mac_menu-wrapper");
-    const trigger = document.querySelector("#mac");
-    const menu = document.querySelector("#mac_menu");
-    const links = gsap.utils.toArray("#mac_menu a");
-    console.log(links);
+    const navLinks = document.querySelectorAll("nav a[data-target]");
 
-    if (!wrapper || !trigger || !menu) return;
+    navLinks.forEach(link => {
+        const targetId = link.getAttribute("data-target");
+        const menuWrapper = document.getElementById(targetId);
 
-    // ✅ create the timeline once, paused
-    const menu_entery_animation = gsap.timeline({ paused: true });
+        if (!menuWrapper) return;
 
-    menu_entery_animation
-        .to(wrapper, {
-            visibility: "visible",
-            opacity: 1,
-            top: "0rem",
-            duration: 1,
-            ease: "power2.out"
-        })
-        .to(wrapper, {
-            backdropFilter: 'blur(15px)',
-            duration: 1,
-            ease: "power3.out"
+        // Store the animation in a timeline
+        const menuEntryAnimation = gsap.timeline({ paused: true });
+
+        menuEntryAnimation
+            .to(menuWrapper, {
+                visibility: "visible",
+                opacity: 1,
+                top: "0rem",
+                duration: 1,
+                ease: "power2.out"
+            })
+            .to(menuWrapper, {
+                backdropFilter: 'blur(15px)',
+                duration: 1,
+                ease: "power3.out"
+            });
+
+        link.addEventListener("mouseenter", () => {
+            menuEntryAnimation.restart();
         });
 
-    // ✅ trigger the animation on hover
-    trigger.addEventListener("mouseenter", () => {
-        menu_entery_animation.restart();
+        link.addEventListener("mouseleave", () => {
+            menuEntryAnimation.reverse();
+        });
     });
 
 });
