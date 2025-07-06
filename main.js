@@ -34,14 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("mouseenter", () => {
             console.log(`🔥 HOVERED: ${link.textContent.trim()}`);
 
-            // Hide all other dropdowns
-            document.querySelectorAll(".nav_drop-menu").forEach(m => {
-                gsap.set(m, { autoAlpha: 0 });
-            });
-
-            // Show only the one we need
-            gsap.set(drop_menuWrapper, { autoAlpha: 1 });
-
             // Animate the global wrapper
             const tl = gsap.timeline();
             tl.set(all_Dropmenu_Wrapper, { visibility:"visible" }); // <== Make sure it's visible
