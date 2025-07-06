@@ -19,8 +19,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const drop_menu_links = drop_menuWrapper.querySelectorAll("a");
 
-        drop_menu_links[0].forEach(innerLink => {
-            console.log(innerLink.textContent);
+        //start hover animation. 
+        link.addEventListener("mouseenter", () => {
+            // Hide all other menu wrappers
+            document.querySelectorAll(".nav_drop-menu").forEach(m => {
+                m.style.display = "none";
+            });
+
+            // Show only the one we need
+            drop_menuWrapper.style.display = "block";
+
+            // Animation timeline
+            const tl = gsap.timeline();
+
+            // Step 1: Move the whole nav menu component (global wrapper)
+            tl.to(all_Dropmenu_Wrapper, {
+                top: "0rem",
+                duration: 0.6,
+                ease: "power2.out"
+            }).from(drop_menuWrapper, {
+                opacity: 1,
+                backdropFilter: "blur(15px)",
+                duration: 0.5,
+                ease: "power2.out"
+            }, "<").from(drop_menu_links, {
+                opacity: 0,
+                y: 20,
+                stagger: 0.1,
+                duration: 0.4,
+                ease: "power2.out"
+            }, "<+=0.2"); // start 0.2s after wrapper starts
+        });
+
+        link.addEventListener("mouseleave", () => {
+            // Optional reverse or hide
         });
     });
+
+
+
+
+
+});
 });
