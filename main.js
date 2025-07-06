@@ -55,10 +55,4 @@ document.addEventListener("DOMContentLoaded", () => {
             // Optional reverse or hide
         });
     });
-
-
-
-
-
-});
 });
