@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 ease: "power2.out"
             }, "<");
 
-               tl.to(drop_menuWrapper, {
-                transform:"translateY(0px)",
+               tl.from(drop_menuWrapper, {
+                opacity:1,
                 duration: 0.4,
                 ease: "power2.out"
             }, "<");
