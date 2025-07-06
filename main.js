@@ -18,14 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!drop_menuWrapper || !all_Dropmenu_Wrapper) return;
 
         // Get the inner links
-        const innerLinks = drop_menuWrapper.querySelectorAll("a");
+        const drop_menu_link = drop_menuWrapper.querySelectorAll("a");
 
-        // console.log("all_NavLinks", all_NavLinks)
-        console.log(link)
-        // console.log("all_Dropmenu_Wrapper", all_Dropmenu_Wrapper)
-        // console.log("drop_menuWrapper", drop_menuWrapper)
-        // console.log("targetiD", targetId)
-        // paste it here 
+        console.log(drop_menu_link[0])
 
 
         
