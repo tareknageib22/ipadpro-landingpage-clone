@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const drop_menu_links = drop_menuWrapper.querySelectorAll("a");
 
-        drop_menu_links.forEach(innerLink => {
+        drop_menu_links[0].forEach(innerLink => {
             console.log(innerLink.textContent);
         });
     });
