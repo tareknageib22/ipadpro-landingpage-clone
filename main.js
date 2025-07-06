@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Animate the global wrapper
             const tl = gsap.timeline();
-            tl.set(all_Dropmenu_Wrapper, { autoAlpha: 1 }); // <== Make sure it's visible
+            tl.set(all_Dropmenu_Wrapper, { visibility:"visible" }); // <== Make sure it's visible
 
             tl.to(all_Dropmenu_Wrapper, {
                 top: "0rem",
@@ -52,12 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 ease: "power2.out"
             });
 
-            tl.fromTo(drop_menuWrapper, {
-                opacity: 0,
-                backdropFilter: "blur(0px)"
-            }, {
-                opacity: 1,
+            tl.to(all_Dropmenu_Wrapper, {
                 backdropFilter: "blur(15px)",
+                duration: 0.4,
+                ease: "power2.out"
+            }, "<");
+
+               tl.from(drop_menuWrapper, {
+                y:20,
                 duration: 0.4,
                 ease: "power2.out"
             }, "<");
