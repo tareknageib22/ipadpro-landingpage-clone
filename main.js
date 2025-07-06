@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the inner links
         const innerLinks = drop_menuWrapper.querySelectorAll("a");
 
-        // console.log("all_NavLinks", all_NavLinks)
-        console.log("links-target-id", link)
+        console.log("all_NavLinks", all_NavLinks)
+        // console.log("links-target-id", link)
         // console.log("all_Dropmenu_Wrapper", all_Dropmenu_Wrapper)
         // console.log("drop_menuWrapper", drop_menuWrapper)
         // console.log("targetiD", targetId)
