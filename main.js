@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             tl.from(drop_menu_links, {
                 opacity: 0,
-                y: 20,
                 stagger: 0.1,
                 duration: 0.3,
                 ease: "power2.out"
