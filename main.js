@@ -17,13 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const drop_menuWrapper = document.getElementById(targetId);
         if (!drop_menuWrapper || !all_Dropmenu_Wrapper) return;
 
-        // Get the inner links
-        const drop_menu_link = drop_menuWrapper.querySelectorAll("a");
+        const drop_menu_links = drop_menuWrapper.querySelectorAll("a");
 
-        console.log(drop_menu_link.textContent);
-
-
-
-        
+        drop_menu_links.forEach(innerLink => {
+            console.log(innerLink.textContent);
+        });
     });
 });
