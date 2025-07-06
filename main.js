@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the inner links
         const drop_menu_link = drop_menuWrapper.querySelectorAll("a");
 
-        console.log(drop_menu_link.textContent())
+        console.log(drop_menu_link.textContent);
+
 
 
         
