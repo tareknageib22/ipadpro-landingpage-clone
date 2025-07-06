@@ -10,79 +10,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const all_Dropmenu_Wrapper = document.getElementById("all-dropmenu-wrapper");
-    const all_NavLinks = gsap.utils.toArray("nav a[data-target]");
-
-    console.log("Found nav links:", all_NavLinks);
+    const all_NavLinks = gsap.utils.toArray("a[data-target]");
 
     if (!all_Dropmenu_Wrapper) {
         console.warn("⚠️ #all-dropmenu-wrapper not found!");
         return;
     }
 
+    console.log("✅ Found nav links:", all_NavLinks);
+
     all_NavLinks.forEach(link => {
         const targetId = link.getAttribute("data-target");
         const drop_menuWrapper = document.getElementById(targetId);
 
-        console.log(`➡️ Hover listener setup for:`, link);
-        console.log(`📌 Target ID: ${targetId}, Found Wrapper:`, drop_menuWrapper);
-
         if (!drop_menuWrapper) {
-            console.warn(`⚠️ Wrapper with ID "${targetId}" not found`);
+            console.warn(`⚠️ Menu wrapper with ID "${targetId}" not found.`);
             return;
         }
 
         const drop_menu_links = drop_menuWrapper.querySelectorAll("a");
-        console.log(`📎 Links inside wrapper:`, drop_menu_links);
+        console.log(`🔗 Setup complete for: ${link.textContent.trim()} → Target: ${targetId}`);
 
         link.addEventListener("mouseenter", () => {
-            console.log(`🔥 Hovered on: ${link.textContent.trim()}`);
+            console.log(`🔥 HOVERED: ${link.textContent.trim()}`);
 
-            // Hide all dropdowns
+            // Hide all other dropdowns
             document.querySelectorAll(".nav_drop-menu").forEach(m => {
                 gsap.set(m, { autoAlpha: 0 });
             });
 
-            // Show current dropdown
+            // Show only the one we need
             gsap.set(drop_menuWrapper, { autoAlpha: 1 });
 
-            // Animate global wrapper
+            // Animate the global wrapper
             const tl = gsap.timeline();
+            tl.set(all_Dropmenu_Wrapper, { autoAlpha: 1 }); // <== Make sure it's visible
 
             tl.to(all_Dropmenu_Wrapper, {
                 top: "0rem",
-                autoAlpha: 1,
-                duration: 0.5,
+                duration: 0.4,
                 ease: "power2.out"
             });
 
-            // Animate current dropdown wrapper (opacity, blur)
             tl.fromTo(drop_menuWrapper, {
                 opacity: 0,
                 backdropFilter: "blur(0px)"
             }, {
                 opacity: 1,
                 backdropFilter: "blur(15px)",
-                duration: 0.5,
+                duration: 0.4,
                 ease: "power2.out"
             }, "<");
 
-            // Animate menu links
             tl.from(drop_menu_links, {
                 opacity: 0,
                 y: 20,
                 stagger: 0.1,
-                duration: 0.4,
+                duration: 0.3,
                 ease: "power2.out"
             }, "<+=0.1");
         });
-
-        // Optional: mouseleave behavior
-        // link.addEventListener("mouseleave", () => {
-        //     gsap.to(all_Dropmenu_Wrapper, {
-        //         top: "-100vh",
-        //         duration: 0.5,
-        //         ease: "power2.in"
-        //     });
-        // });
     });
 });
